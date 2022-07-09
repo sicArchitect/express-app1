@@ -20,39 +20,20 @@ app.get('/about', (req, res) => {
   res.show('about.html');
 });
 
-app.get('style.css', (req, res) => {
+app.get('/style.css', (req, res) => {
   res.show('style.css');
 });
 
-// authenticate user
-app.get('/user/settings', (req, res) => {
-  app.post(
-    '/login/password',
-    passport.authenticate('local', {
-      failureRedirect: '/login',
-      failureMessage: true,
-    }),
-    function (req, res) {
-      res.redirect('/~' + req.user.username);
-    }
-  );
+app.get(`/user`, (req, res) => {
+  res.show('forbidden.html');
 });
 
-app.get('/user/panel', (req, res) => {
-  app.post(
-    '/login/password',
-    passport.authenticate('local', {
-      failureRedirect: '/login',
-      failureMessage: true,
-    }),
-    function (req, res) {
-      res.redirect('/~' + req.user.username);
-    }
-  );
+app.get('/error', (req, res) => {
+  res.show('404_error.png');
 });
 
 app.use((req, res) => {
-  res.status(404).send();
+  res.status(404).show('404.html');
 });
 
 app.listen(8000, () => {

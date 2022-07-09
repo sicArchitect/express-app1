@@ -19,28 +19,17 @@ app.get('/', function (req, res) {
 app.get('/about', function (req, res) {
   res.show('about.html');
 });
-app.get('style.css', function (req, res) {
+app.get('/style.css', function (req, res) {
   res.show('style.css');
-}); // authenticate user
-
-app.get('/user/settings', function (req, res) {
-  app.post('/login/password', passport.authenticate('local', {
-    failureRedirect: '/login',
-    failureMessage: true
-  }), function (req, res) {
-    res.redirect('/~' + req.user.username);
-  });
 });
-app.get('/user/panel', function (req, res) {
-  app.post('/login/password', passport.authenticate('local', {
-    failureRedirect: '/login',
-    failureMessage: true
-  }), function (req, res) {
-    res.redirect('/~' + req.user.username);
-  });
+app.get("/user", function (req, res) {
+  res.show('forbidden.html');
+});
+app.get('/error', function (req, res) {
+  res.show('404_error.png');
 });
 app.use(function (req, res) {
-  res.status(404).send();
+  res.status(404).show('404.html');
 });
 app.listen(8000, function () {
   console.log('Server running on port: 8000');

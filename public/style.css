@@ -1,4 +1,9 @@
 h1 {
-    font-weight: lighter;
-    font-style: italic;
+  font-weight: lighter;
+  font-style: italic;
+}
+
+img {
+  width: 100%;
+  height: 100%;
 }
