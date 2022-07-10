@@ -28,10 +28,6 @@ app.get(`/user`, (req, res) => {
   res.show('forbidden.html');
 });
 
-app.get('/error', (req, res) => {
-  res.show('404_error.png');
-});
-
 app.use((req, res) => {
   res.status(404).show('404.html');
 });
